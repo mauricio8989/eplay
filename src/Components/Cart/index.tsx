@@ -1,20 +1,13 @@
 import { Button } from '../Button'
 import { Tag } from '../Tag'
-import {
-  Sidebar,
-  Container,
-  OverLay,
-  Prices,
-  Quantity,
-  CartItem
-} from './style'
+import * as S from './style'
 
 import { close } from '../../store/reducers/cart'
 import { remove } from '../../store/reducers/cart'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
-import { formatPrice } from '../ProductsList'
+import { parseToBrl } from '../../utils'
 import { Game } from '../../pages/Home'
 
 export function Cart() {
@@ -32,13 +25,13 @@ export function Cart() {
   }
 
   return (
-    <Container className={isOpen ? 'is-open' : ''}>
-      <OverLay onClick={closeCart} />
-      <Sidebar>
+    <S.Container className={isOpen ? 'is-open' : ''}>
+      <S.OverLay onClick={closeCart} />
+      <S.Sidebar>
         <ul>
           {items &&
             items.map((item: Game) => (
-              <CartItem key={item.id}>
+              <S.CartItem key={item.id}>
                 <img src={item.media.thumbnail} />
                 <div>
                   <h3>{item.name}</h3>
@@ -46,24 +39,24 @@ export function Cart() {
                     <Tag>{item.details.category}</Tag>
                     <Tag>{item.details.system}</Tag>
                   </div>
-                  <span>{formatPrice(item.prices.current)}</span>
+                  <span>{parseToBrl(item.prices.current)}</span>
                 </div>
                 <button
                   onClick={() => dispatch(remove(item.id))}
                   type="button"
                 />
-              </CartItem>
+              </S.CartItem>
             ))}
         </ul>
-        <Quantity>{items.length} jogo(s) no carrinho</Quantity>
-        <Prices>
-          Total de {formatPrice(getTotalPrice())}{' '}
+        <S.Quantity>{items.length} jogo(s) no carrinho</S.Quantity>
+        <S.Prices>
+          Total de {parseToBrl(getTotalPrice())}{' '}
           <span>Em até 6x sem juros</span>
-        </Prices>
+        </S.Prices>
         <Button title="Clique aqui para continuar com a compra" type="button">
           Continuar com a compra
         </Button>
-      </Sidebar>
-    </Container>
+      </S.Sidebar>
+    </S.Container>
   )
 }

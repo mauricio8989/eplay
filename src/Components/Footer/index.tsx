@@ -1,46 +1,46 @@
-import { Container, FootSection, Links, Link, SectionTitle } from './style'
+import * as S from './style'
 const currentYear = new Date().getFullYear()
 
 export function Footer() {
   return (
-    <Container>
+    <S.Container>
       <div className="container">
-        <FootSection>
-          <SectionTitle>Categorias</SectionTitle>
-          <Links>
+        <S.FootSection>
+          <S.SectionTitle>Categorias</S.SectionTitle>
+          <S.Links>
             <li>
-              <Link to="/categories#rpg">RPG</Link>
+              <S.Link to="/categories#rpg">RPG</S.Link>
             </li>
             <li>
-              <Link to="/categories#action">Ação</Link>
+              <S.Link to="/categories#action">Ação</S.Link>
             </li>
             <li>
-              <Link to="/categories#sports">Esportes</Link>
+              <S.Link to="/categories#sports">Esportes</S.Link>
             </li>
             <li>
-              <Link to="/categories#simulation">Sinulação</Link>
+              <S.Link to="/categories#simulation">Sinulação</S.Link>
             </li>
             <li>
-              <Link to="/categories#">FPS</Link>
+              <S.Link to="/categories#">FPS</S.Link>
             </li>
             <li>
-              <Link to="/categories#fight">Luta</Link>
+              <S.Link to="/categories#fight">Luta</S.Link>
             </li>
-          </Links>
-        </FootSection>
-        <FootSection>
-          <SectionTitle>Acesso rápido</SectionTitle>
-          <Links>
+          </S.Links>
+        </S.FootSection>
+        <S.FootSection>
+          <S.SectionTitle>Acesso rápido</S.SectionTitle>
+          <S.Links>
             <li>
-              <Link to="/#on-sale">Promoções</Link>
+              <S.Link to="/#on-sale">Promoções</S.Link>
             </li>
             <li>
-              <Link to="/#coming-soon">Em breve</Link>
+              <S.Link to="/#coming-soon">Em breve</S.Link>
             </li>
-          </Links>
-        </FootSection>
+          </S.Links>
+        </S.FootSection>
         <p>{currentYear} - &copy; E-PLAY Todos os direitos reservados</p>
       </div>
-    </Container>
+    </S.Container>
   )
 }

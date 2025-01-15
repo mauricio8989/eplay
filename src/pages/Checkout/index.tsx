@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Button } from '../../Components/Button'
 import { Card } from '../../Components/Card'
-import { Container, InputGroup, Row, TabButton } from './style'
-import boleto from '../../images/boleto.png'
-import cartao from '../../images/cartao.png'
+import * as S from './style'
+import barCode from '../../images/boleto.png'
+import CreditCard from '../../images/cartao.png'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { usePurchaseMutation } from '../../services/api'
@@ -160,11 +160,11 @@ export function Checkout() {
           </>
         </Card>
       ) : (
-        <Container onSubmit={form.handleSubmit}>
+        <S.Container onSubmit={form.handleSubmit}>
           <Card title="Dados de cobrança">
             <>
-              <Row>
-                <InputGroup>
+              <S.Row>
+                <S.InputGroup>
                   <label htmlFor="fullName">Nome completo</label>
                   <input
                     id="fullName"
@@ -177,8 +177,8 @@ export function Checkout() {
                   <small>
                     {getErrorMessage('fullName', form.errors.fullName)}
                   </small>
-                </InputGroup>
-                <InputGroup>
+                </S.InputGroup>
+                <S.InputGroup>
                   <label htmlFor="email">Email</label>
                   <input
                     id="email"
@@ -189,8 +189,8 @@ export function Checkout() {
                     onBlur={form.handleBlur}
                   />
                   <small>{getErrorMessage('email', form.errors.email)}</small>
-                </InputGroup>
-                <InputGroup>
+                </S.InputGroup>
+                <S.InputGroup>
                   <label htmlFor="cpf">CPF</label>
                   <input
                     id="cpf"
@@ -201,13 +201,13 @@ export function Checkout() {
                     onBlur={form.handleBlur}
                   />
                   <small>{getErrorMessage('cpf', form.errors.cpf)}</small>
-                </InputGroup>
-              </Row>
+                </S.InputGroup>
+              </S.Row>
               <h3 className="margin-top">
                 Dados de entrega - conteúdo digital
               </h3>
-              <Row>
-                <InputGroup>
+              <S.Row>
+                <S.InputGroup>
                   <label htmlFor="deliveryEmail">Email</label>
                   <input
                     id="deliveryEmail"
@@ -223,8 +223,8 @@ export function Checkout() {
                       form.errors.deliveryEmail
                     )}
                   </small>
-                </InputGroup>
-                <InputGroup>
+                </S.InputGroup>
+                <S.InputGroup>
                   <label htmlFor="confirmDeliveryEmail">Confirme o email</label>
                   <input
                     id="confirmDeliveryEmail"
@@ -240,26 +240,26 @@ export function Checkout() {
                       form.errors.confirmDeliveryEmail
                     )}
                   </small>
-                </InputGroup>
-              </Row>
+                </S.InputGroup>
+              </S.Row>
             </>
           </Card>
           <Card title="Pagamento">
             <>
-              <TabButton
+              <S.TabButton
                 onClick={() => setPayWithCard(false)}
                 isActive={!payWithCard}
               >
-                <img src={boleto} alt="boleto" />
+                <img src={barCode} alt="boleto" />
                 Boleto bancário
-              </TabButton>
-              <TabButton
+              </S.TabButton>
+              <S.TabButton
                 onClick={() => setPayWithCard(true)}
                 isActive={payWithCard}
               >
-                <img src={cartao} alt="Cartão de crédito" />
+                <img src={CreditCard} alt="Cartão de crédito" />
                 Cartão de crédito
-              </TabButton>
+              </S.TabButton>
               <div className="margin-top">
                 {!payWithCard ? (
                   <p>
@@ -272,8 +272,8 @@ export function Checkout() {
                   </p>
                 ) : (
                   <>
-                    <Row>
-                      <InputGroup>
+                    <S.Row>
+                      <S.InputGroup>
                         <label htmlFor="cardOwner">
                           Nome do titular do cartão
                         </label>
@@ -288,8 +288,8 @@ export function Checkout() {
                         <small>
                           {getErrorMessage('cardOwner', form.errors.cardOwner)}
                         </small>
-                      </InputGroup>
-                      <InputGroup>
+                      </S.InputGroup>
+                      <S.InputGroup>
                         <label htmlFor="cpfCardOwner">
                           CPF do titular do cartão
                         </label>
@@ -307,10 +307,10 @@ export function Checkout() {
                             form.errors.cpfCardOwner
                           )}
                         </small>
-                      </InputGroup>
-                    </Row>
-                    <Row marginTop="24px">
-                      <InputGroup>
+                      </S.InputGroup>
+                    </S.Row>
+                    <S.Row marginTop="24px">
+                      <S.InputGroup>
                         <label htmlFor="cardDisplayName">Nome no cartão</label>
                         <input
                           type="text"
@@ -326,8 +326,8 @@ export function Checkout() {
                             form.errors.cardDisplayName
                           )}
                         </small>
-                      </InputGroup>
-                      <InputGroup>
+                      </S.InputGroup>
+                      <S.InputGroup>
                         <label htmlFor="cardNumber">
                           Nome do titular do cartão
                         </label>
@@ -345,8 +345,8 @@ export function Checkout() {
                             form.errors.cardNumber
                           )}
                         </small>
-                      </InputGroup>
-                      <InputGroup maxWidth="123px">
+                      </S.InputGroup>
+                      <S.InputGroup maxWidth="123px">
                         <label htmlFor="expiresMonth">Mês de vencimento</label>
                         <input
                           type="text"
@@ -362,8 +362,8 @@ export function Checkout() {
                             form.errors.expiresMonth
                           )}
                         </small>
-                      </InputGroup>
-                      <InputGroup maxWidth="123px">
+                      </S.InputGroup>
+                      <S.InputGroup maxWidth="123px">
                         <label htmlFor="expiresYear">Ano de vencimento</label>
                         <input
                           type="text"
@@ -379,8 +379,8 @@ export function Checkout() {
                             form.errors.expiresYear
                           )}
                         </small>
-                      </InputGroup>
-                      <InputGroup maxWidth="48px">
+                      </S.InputGroup>
+                      <S.InputGroup maxWidth="48px">
                         <label htmlFor="cardCode">CVV</label>
                         <input
                           type="text"
@@ -393,10 +393,10 @@ export function Checkout() {
                         <small>
                           {getErrorMessage('cardCode', form.errors.cardCode)}
                         </small>
-                      </InputGroup>
-                    </Row>
-                    <Row marginTop="24px">
-                      <InputGroup maxWidth="150px">
+                      </S.InputGroup>
+                    </S.Row>
+                    <S.Row marginTop="24px">
+                      <S.InputGroup maxWidth="150px">
                         <label htmlFor="installments">Parcelamento</label>
                         <select
                           id="installments"
@@ -409,8 +409,8 @@ export function Checkout() {
                           <option value={2}>2x de R$ 100,00</option>
                           <option value={3}>3x de R$ 200,00</option>
                         </select>
-                      </InputGroup>
-                    </Row>
+                      </S.InputGroup>
+                    </S.Row>
                   </>
                 )}
               </div>
@@ -419,7 +419,7 @@ export function Checkout() {
           <Button type="button" title="Clique aqui para finalizar a compra">
             Finalizar compra
           </Button>
-        </Container>
+        </S.Container>
       )}
     </div>
   )

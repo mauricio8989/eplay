@@ -1,4 +1,4 @@
-import { ButtonContainer, ButtonLink } from './style'
+import * as S from './style'
 
 export type Props = {
   type: 'button' | 'link' | 'submit'
@@ -19,19 +19,19 @@ export function Button({
 }: Props): JSX.Element {
   if (type === 'button') {
     return (
-      <ButtonContainer
+      <S.ButtonContainer
         variant={variant}
         type="button"
         title={title}
         onClick={onClick}
       >
         {children}
-      </ButtonContainer>
+      </S.ButtonContainer>
     )
   }
   return (
-    <ButtonLink to={to as string} title={title}>
+    <S.ButtonLink to={to as string} title={title}>
       {children}
-    </ButtonLink>
+    </S.ButtonLink>
   )
 }

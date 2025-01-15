@@ -1,8 +1,8 @@
-import { Image, Prices, Title } from './style'
+import * as S from './style'
 import { Tag } from '../Tag'
 import { Button } from '../Button'
-import { formatPrice } from '../ProductsList'
 import { useGetFeaturedGameQuery } from '../../services/api'
+import { parseToBrl } from '../../utils'
 
 export function Banner() {
   const { data: game } = useGetFeaturedGameQuery()
@@ -10,16 +10,16 @@ export function Banner() {
   if (!game) return <h3>Carrehando...</h3>
   const route = `/produto/${game.id}`
   return (
-    <Image style={{ backgroundImage: `url(${game.media.cover})` }}>
+    <S.Image style={{ backgroundImage: `url(${game.media.cover})` }}>
       <div className="container">
         <Tag size="large">Destaque do dia</Tag>
         <div>
-          <Title>{game.name}</Title>
-          <Prices>
-            De <span>{formatPrice(game.prices.old)}</span>
+          <S.Title>{game.name}</S.Title>
+          <S.Prices>
+            De <span>{parseToBrl(game.prices.old)}</span>
             <br />
-            por apenas {formatPrice(game.prices.current)}
-          </Prices>
+            por apenas {parseToBrl(game.prices.current)}
+          </S.Prices>
         </div>
         <Button
           type="link"
@@ -29,6 +29,6 @@ export function Banner() {
           Aproveitar
         </Button>
       </div>
-    </Image>
+    </S.Image>
   )
 }

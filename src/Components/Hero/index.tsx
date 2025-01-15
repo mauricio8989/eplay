@@ -2,7 +2,7 @@ import { Game } from '../../pages/Home'
 import { Button } from '../Button'
 import { Tag } from '../Tag'
 import { Banner, Infos } from './style'
-import { formatPrice } from '../ProductsList'
+import { parseToBrl } from '../../utils'
 import { add } from '../../store/reducers/cart'
 import { useDispatch } from 'react-redux'
 type Props = {
@@ -21,9 +21,9 @@ export function Hero({ game }: Props) {
         <Infos>
           <h2>{game.name}</h2>
           <div>
-            {game.prices.old && <span>De {formatPrice(game.prices.old)}</span>}
+            {game.prices.old && <span>De {parseToBrl(game.prices.old)}</span>}
             {game.prices.current && (
-              <p>Por {formatPrice(game.prices.current)}</p>
+              <p>Por {parseToBrl(game.prices.current)}</p>
             )}
           </div>
           {game.prices.current && (

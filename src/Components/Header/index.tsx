@@ -1,13 +1,5 @@
 import { Link } from 'react-router-dom'
-import {
-  HeaderBar,
-  ButtonCart,
-  Links,
-  Hamburguer,
-  HeaderRow,
-  LinkItem,
-  NavMobile
-} from './style'
+import * as S from './style'
 import logo from '../../images/logo.svg'
 import { FaShoppingCart } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
@@ -26,53 +18,53 @@ export function Header() {
 
   return (
     <div className="container">
-      <HeaderBar>
-        <HeaderRow>
+      <S.HeaderBar>
+        <S.HeaderRow>
           <div>
-            <Hamburguer onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <S.Hamburguer onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <span />
               <span />
               <span />
-            </Hamburguer>
+            </S.Hamburguer>
             <Link to="/">
               <img src={logo} alt="EPLAY" />
             </Link>
             <nav>
-              <Links>
-                <LinkItem>
+              <S.Links>
+                <S.LinkItem>
                   <Link to="/categories">Categorias</Link>
-                </LinkItem>
-                <LinkItem>
+                </S.LinkItem>
+                <S.LinkItem>
                   <Link to="/news">Novidades</Link>
-                </LinkItem>
-                <LinkItem>
+                </S.LinkItem>
+                <S.LinkItem>
                   <Link to="/sales">Promoções</Link>
-                </LinkItem>
-              </Links>
+                </S.LinkItem>
+              </S.Links>
             </nav>
           </div>
-          <ButtonCart onClick={openCart}>
+          <S.ButtonCart onClick={openCart}>
             <div>
               {items.length}
               <span> - Produto(s)</span>
             </div>
             <FaShoppingCart />
-          </ButtonCart>
-        </HeaderRow>
-        <NavMobile className={isMenuOpen ? 'is-open' : ''}>
-          <Links>
-            <LinkItem>
+          </S.ButtonCart>
+        </S.HeaderRow>
+        <S.NavMobile className={isMenuOpen ? 'is-open' : ''}>
+          <S.Links>
+            <S.LinkItem>
               <Link to="/categories">Categorias</Link>
-            </LinkItem>
-            <LinkItem>
+            </S.LinkItem>
+            <S.LinkItem>
               <Link to="/news">Novidades</Link>
-            </LinkItem>
-            <LinkItem>
+            </S.LinkItem>
+            <S.LinkItem>
               <Link to="/sales">Promoções</Link>
-            </LinkItem>
-          </Links>
-        </NavMobile>
-      </HeaderBar>
+            </S.LinkItem>
+          </S.Links>
+        </S.NavMobile>
+      </S.HeaderBar>
     </div>
   )
 }
