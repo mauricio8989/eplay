@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '../../Components/Button';
 import { Card } from '../../Components/Card';
 import * as S from './style';
@@ -10,14 +10,22 @@ import { usePurchaseMutation } from '../../services/api';
 import { useSelector } from 'react-redux';
 import { RootReducer } from '../../store';
 import { Navigate } from 'react-router-dom';
+import { getTotalPrice, parseToBrl } from '../../utils';
+
+type Installment = {
+  quatity: number;
+  amount: number;
+  formattedAmount: string;
+};
 
 export function Checkout() {
   const [payWithCard, setPayWithCard] = useState(false);
+  const { items } = useSelector((state: RootReducer) => state.cart);
+  const [installments, setInstallments] = useState<Installment[]>([]);
+  const totalPrice = getTotalPrice(items);
 
   const [purchase, { isLoading, isError, data, isSuccess }] =
     usePurchaseMutation();
-
-  const { items } = useSelector((state: RootReducer) => state.cart);
 
   const form = useFormik({
     initialValues: {
@@ -117,6 +125,23 @@ export function Checkout() {
 
     return hasError;
   };
+
+  useEffect(() => {
+    const calculateInstalments = () => {
+      const installmentsArray: Installment[] = [];
+      for (let i = 1; i <= 6; i++) {
+        installmentsArray.push({
+          quatity: i,
+          amount: totalPrice / i,
+          formattedAmount: parseToBrl(totalPrice / i),
+        });
+      }
+      return installmentsArray;
+    };
+    if (totalPrice > 0) {
+      setInstallments(calculateInstalments);
+    }
+  }, [totalPrice]);
 
   if (items.length === 0) {
     return <Navigate to="/" />;
@@ -243,6 +268,7 @@ export function Checkout() {
               <S.TabButton
                 onClick={() => setPayWithCard(false)}
                 isActive={!payWithCard}
+                type="button"
               >
                 <img src={barCode} alt="boleto" />
                 Boleto bancário
@@ -250,6 +276,7 @@ export function Checkout() {
               <S.TabButton
                 onClick={() => setPayWithCard(true)}
                 isActive={payWithCard}
+                type="button"
               >
                 <img src={CreditCard} alt="Cartão de crédito" />
                 Cartão de crédito
@@ -387,9 +414,12 @@ export function Checkout() {
                             checkInputHasError('installments') ? 'error' : ''
                           }
                         >
-                          <option value={1}>1x de R$ 200,00</option>
-                          <option value={2}>2x de R$ 100,00</option>
-                          <option value={3}>3x de R$ 200,00</option>
+                          {installments.map((installment) => (
+                            <option key={installment.quatity}>
+                              {installment.quatity}x de{' '}
+                              {installment.formattedAmount}
+                            </option>
+                          ))}
                         </select>
                       </S.InputGroup>
                     </S.Row>
@@ -398,7 +428,7 @@ export function Checkout() {
               </div>
             </>
           </Card>
-          <Button type="button" title="Clique aqui para finalizar a compra">
+          <Button type="submit" title="Clique aqui para finalizar a compra">
             Finalizar compra
           </Button>
         </S.Container>

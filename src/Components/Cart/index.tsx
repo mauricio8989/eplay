@@ -10,6 +10,7 @@ import { RootReducer } from '../../store';
 import { parseToBrl } from '../../utils';
 import { Game } from '../../pages/Home';
 import { useNavigate } from 'react-router-dom';
+import { getTotalPrice } from '../../utils';
 
 export function Cart() {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
@@ -18,15 +19,6 @@ export function Cart() {
 
   function closeCart() {
     dispatch(close());
-  }
-
-  function getTotalPrice() {
-    return items.reduce((acumulator, currentItem) => {
-      if (currentItem.prices.current) {
-        return (acumulator += currentItem.prices.current);
-      }
-      return 0;
-    }, 0);
   }
 
   const goToCheckout = () => {
@@ -64,7 +56,7 @@ export function Cart() {
         </ul>
         <S.Quantity>{items.length} jogo(s) no carrinho</S.Quantity>
         <S.Prices>
-          Total de {parseToBrl(getTotalPrice())}{' '}
+          Total de {parseToBrl(getTotalPrice(items))}{' '}
           <span>Em até 6x sem juros</span>
         </S.Prices>
         <Button

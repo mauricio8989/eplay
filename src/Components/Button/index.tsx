@@ -17,11 +17,11 @@ export function Button({
   title,
   variant = 'primary',
 }: Props): JSX.Element {
-  if (type === 'button') {
+  if (type === 'button' || type === 'submit') {
     return (
       <S.ButtonContainer
         variant={variant}
-        type="button"
+        type={type}
         title={title}
         onClick={onClick}
       >
