@@ -1,8 +1,8 @@
-import { Routes, Route } from 'react-router-dom'
-import { Home } from './pages/Home'
-import { Categories } from './pages/Categories'
-import { Product } from './pages/Product'
-import { Checkout } from './pages/Checkout'
+import { Routes, Route } from 'react-router-dom';
+import { Home } from './pages/Home';
+import { Categories } from './pages/Categories';
+import { Product } from './pages/Product';
+import { Checkout } from './pages/Checkout';
 
 export function Router() {
   return (
@@ -12,5 +12,5 @@ export function Router() {
       <Route path="/produto/:id" element={<Product />} />
       <Route path="/checkout" element={<Checkout />} />
     </Routes>
-  )
+  );
 }

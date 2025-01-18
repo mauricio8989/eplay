@@ -1,20 +1,20 @@
-import { Link } from 'react-router-dom'
-import * as S from './style'
-import logo from '../../images/logo.svg'
-import { FaShoppingCart } from 'react-icons/fa'
-import { useDispatch, useSelector } from 'react-redux'
-import { open } from '../../store/reducers/cart'
-import { RootReducer } from '../../store'
-import { useState } from 'react'
+import { Link } from 'react-router-dom';
+import * as S from './style';
+import logo from '../../images/logo.svg';
+import { FaShoppingCart } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { open } from '../../store/reducers/cart';
+import { RootReducer } from '../../store';
+import { useState } from 'react';
 
 export function Header() {
-  const { items } = useSelector((state: RootReducer) => state.cart)
-  const dispatch = useDispatch()
+  const { items } = useSelector((state: RootReducer) => state.cart);
+  const dispatch = useDispatch();
   function openCart() {
-    dispatch(open())
+    dispatch(open());
   }
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div className="container">
@@ -66,5 +66,5 @@ export function Header() {
         </S.NavMobile>
       </S.HeaderBar>
     </div>
-  )
+  );
 }

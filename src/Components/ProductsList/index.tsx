@@ -1,28 +1,28 @@
-import { Product } from '../Product'
-import { List, Container } from './style'
-import { Game } from '../../pages/Home'
-import { parseToBrl } from '../../utils'
+import { Product } from '../Product';
+import { List, Container } from './style';
+import { Game } from '../../pages/Home';
+import { parseToBrl } from '../../utils';
 
 export type Props = {
-  title: string
-  background: 'gray' | 'black'
-  games: Game[]
-  id?: string
-}
+  title: string;
+  background: 'gray' | 'black';
+  games: Game[];
+  id?: string;
+};
 
 export function ProductsList({ title, background, games, id }: Props) {
   function getGameTags(game: Game) {
-    const tags: string[] = []
+    const tags: string[] = [];
     if (game.release_date) {
-      tags.push(game.release_date)
+      tags.push(game.release_date);
     }
     if (game.prices.discount) {
-      tags.push(`${game.prices.discount}%`)
+      tags.push(`${game.prices.discount}%`);
     }
     if (game.prices.current) {
-      tags.push(parseToBrl(game.prices.current))
+      tags.push(parseToBrl(game.prices.current));
     }
-    return tags
+    return tags;
   }
   return (
     <Container background={background} id={id}>
@@ -45,5 +45,5 @@ export function ProductsList({ title, background, games, id }: Props) {
         </List>
       </div>
     </Container>
-  )
+  );
 }

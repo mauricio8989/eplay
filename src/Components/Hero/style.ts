@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { breakpoints, colors } from '../../styles'
-import { TagContainer } from '../Tag/style'
+import styled from 'styled-components';
+import { breakpoints, colors } from '../../styles';
+import { TagContainer } from '../Tag/style';
 
 export const Banner = styled.div`
   width: 100%;
@@ -37,7 +37,7 @@ export const Banner = styled.div`
   @media (max-width: ${breakpoints.tablet}) {
     background-size: cover;
   }
-`
+`;
 export const Infos = styled.div`
   max-width: 290px;
   padding: 16px;
@@ -57,4 +57,4 @@ export const Infos = styled.div`
       text-decoration: line-through;
     }
   }
-`
+`;

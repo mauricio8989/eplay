@@ -1,19 +1,19 @@
-import { ProductsList } from '../../Components/ProductsList'
+import { ProductsList } from '../../Components/ProductsList';
 
 import {
   useGetActionGamesQuery,
   useGetSportGamesQuery,
   useGetSimulationGamesQuery,
   useGetFightGamesQuery,
-  useGetRpgGamesQuery
-} from '../../services/api'
+  useGetRpgGamesQuery,
+} from '../../services/api';
 
 export function Categories() {
-  const { data: actionGames } = useGetActionGamesQuery()
-  const { data: sportGames } = useGetSportGamesQuery()
-  const { data: simulationGames } = useGetSimulationGamesQuery()
-  const { data: fightGames } = useGetFightGamesQuery()
-  const { data: rpgGames } = useGetRpgGamesQuery()
+  const { data: actionGames } = useGetActionGamesQuery();
+  const { data: sportGames } = useGetSportGamesQuery();
+  const { data: simulationGames } = useGetSimulationGamesQuery();
+  const { data: fightGames } = useGetFightGamesQuery();
+  const { data: rpgGames } = useGetRpgGamesQuery();
 
   if (actionGames && sportGames && simulationGames && fightGames && rpgGames) {
     return (
@@ -49,7 +49,7 @@ export function Categories() {
           games={rpgGames}
         />
       </>
-    )
+    );
   }
-  return <h4>Carregando...</h4>
+  return <h4>Carregando...</h4>;
 }

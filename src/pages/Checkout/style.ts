@@ -1,30 +1,30 @@
-import styled from 'styled-components'
-import { colors } from '../../styles'
-import { ButtonContainer } from '../../Components/Button/style'
+import styled from 'styled-components';
+import { colors } from '../../styles';
+import { ButtonContainer } from '../../Components/Button/style';
 
 type InputProps = {
-  maxWidth?: string
-  marginTop?: string
-}
+  maxWidth?: string;
+  marginTop?: string;
+};
 type RowProps = {
-  marginTop?: string
-}
+  marginTop?: string;
+};
 type TabButtonProps = {
-  isActive: boolean
-}
+  isActive: boolean;
+};
 
 export const Container = styled.form`
   ${ButtonContainer} {
     background-color: ${colors.green};
   }
-`
+`;
 
 export const Row = styled.div<RowProps>`
   display: flex;
   column-gap: 24px;
   margin-top: ${(props) => props.marginTop};
   align-items: flex-end;
-`
+`;
 export const InputGroup = styled.div<InputProps>`
   max-width: ${(props) => (props.maxWidth ? props.maxWidth : 'auto')};
   flex: auto;
@@ -41,15 +41,11 @@ export const InputGroup = styled.div<InputProps>`
     height: 32px;
     padding: 0 8px;
     border: 1px solid ${colors.gray};
+    &.error {
+      border: 1px solid red;
+    }
   }
-  small {
-    font-size: 10px;
-    color: red;
-    position: absolute;
-    bottom: -12px;
-    left: 0px;
-  }
-`
+`;
 
 export const TabButton = styled.button<TabButtonProps>`
   border-radius: 8px;
@@ -66,4 +62,4 @@ export const TabButton = styled.button<TabButtonProps>`
   img {
     margin-right: 8px;
   }
-`
+`;

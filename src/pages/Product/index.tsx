@@ -1,14 +1,14 @@
-import { Hero } from '../../Components/Hero'
-import { Section } from '../../Components/Section'
-import { Gallery } from '../../Components/Gallery'
-import { useParams } from 'react-router-dom'
-import { useGetGameQuery } from '../../services/api'
+import { Hero } from '../../Components/Hero';
+import { Section } from '../../Components/Section';
+import { Gallery } from '../../Components/Gallery';
+import { useParams } from 'react-router-dom';
+import { useGetGameQuery } from '../../services/api';
 
 export function Product() {
-  const { id } = useParams()
-  const { data: game } = useGetGameQuery(id!)
+  const { id } = useParams();
+  const { data: game } = useGetGameQuery(id!);
 
-  if (!game) return <h3>Carregando...</h3>
+  if (!game) return <h3>Carregando...</h3>;
   return (
     <>
       <Hero game={game} />
@@ -31,5 +31,5 @@ export function Product() {
         items={game.media.gallery}
       />
     </>
-  )
+  );
 }

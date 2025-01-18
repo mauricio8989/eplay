@@ -1,7 +1,7 @@
-import styled from 'styled-components'
-import { Props } from '.'
-import { breakpoints, colors } from '../../styles'
-import { Card } from '../Product/style'
+import styled from 'styled-components';
+import { Props } from '.';
+import { breakpoints, colors } from '../../styles';
+import { Card } from '../Product/style';
 
 export const Container = styled.section<Omit<Props, 'title' | 'games'>>`
   background-color: ${(props) =>
@@ -13,7 +13,7 @@ export const Container = styled.section<Omit<Props, 'title' | 'games'>>`
   .container {
     padding: 32px 0;
   }
-`
+`;
 export const List = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -25,8 +25,8 @@ export const List = styled.ul`
   @media (max-width: ${breakpoints.tablet}) {
     grid-template-columns: 1fr;
   }
-`
+`;
 export const Title = styled.h2`
   font-size: 18px;
   font-weight: bold;
-`
+`;

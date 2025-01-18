@@ -1,9 +1,9 @@
-import { Container } from './style'
+import { Container } from './style';
 
 type Props = {
-  children: JSX.Element
-  title: string
-}
+  children: JSX.Element;
+  title: string;
+};
 
 export function Card({ title, children }: Props) {
   return (
@@ -11,5 +11,5 @@ export function Card({ title, children }: Props) {
       <h2>{title}</h2>
       {children}
     </Container>
-  )
+  );
 }

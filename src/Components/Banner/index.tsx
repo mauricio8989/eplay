@@ -1,14 +1,14 @@
-import * as S from './style'
-import { Tag } from '../Tag'
-import { Button } from '../Button'
-import { useGetFeaturedGameQuery } from '../../services/api'
-import { parseToBrl } from '../../utils'
+import * as S from './style';
+import { Tag } from '../Tag';
+import { Button } from '../Button';
+import { useGetFeaturedGameQuery } from '../../services/api';
+import { parseToBrl } from '../../utils';
 
 export function Banner() {
-  const { data: game } = useGetFeaturedGameQuery()
+  const { data: game } = useGetFeaturedGameQuery();
 
-  if (!game) return <h3>Carrehando...</h3>
-  const route = `/produto/${game.id}`
+  if (!game) return <h3>Carrehando...</h3>;
+  const route = `/produto/${game.id}`;
   return (
     <S.Image style={{ backgroundImage: `url(${game.media.cover})` }}>
       <div className="container">
@@ -30,5 +30,5 @@ export function Banner() {
         </Button>
       </div>
     </S.Image>
-  )
+  );
 }

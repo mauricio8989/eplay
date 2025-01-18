@@ -1,5 +1,5 @@
-import * as S from './style'
-const currentYear = new Date().getFullYear()
+import * as S from './style';
+const currentYear = new Date().getFullYear();
 
 export function Footer() {
   return (
@@ -42,5 +42,5 @@ export function Footer() {
         <p>{currentYear} - &copy; E-PLAY Todos os direitos reservados</p>
       </div>
     </S.Container>
-  )
+  );
 }

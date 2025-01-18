@@ -1,39 +1,39 @@
-import { Banner } from '../../Components/Banner'
-import { ProductsList } from '../../Components/ProductsList'
-import { useGetOnSaleQuery, useGetSoonQuery } from '../../services/api'
+import { Banner } from '../../Components/Banner';
+import { ProductsList } from '../../Components/ProductsList';
+import { useGetOnSaleQuery, useGetSoonQuery } from '../../services/api';
 
 export type Game = {
-  id: number
-  name: string
-  description: string
-  release_date: string
+  id: number;
+  name: string;
+  description: string;
+  release_date: string;
   prices: {
-    discount: number
-    old: number
-    current: number
-  }
+    discount: number;
+    old: number;
+    current: number;
+  };
   details: {
-    category: string
-    system: string
-    developer: string
-    publisher: string
-    languages: string[]
-  }
+    category: string;
+    system: string;
+    developer: string;
+    publisher: string;
+    languages: string[];
+  };
   media: {
-    thumbnail: string
-    cover: string
+    thumbnail: string;
+    cover: string;
     gallery: [
       {
-        type: string
-        url: string
+        type: string;
+        url: string;
       }
-    ]
-  }
-}
+    ];
+  };
+};
 
 export function Home() {
-  const { data: onSaleGame } = useGetOnSaleQuery()
-  const { data: soonGame } = useGetSoonQuery()
+  const { data: onSaleGame } = useGetOnSaleQuery();
+  const { data: soonGame } = useGetSoonQuery();
 
   if (onSaleGame && soonGame) {
     return (
@@ -52,7 +52,7 @@ export function Home() {
           games={soonGame}
         />
       </>
-    )
+    );
   }
-  return <h4>Carregando...</h4>
+  return <h4>Carregando...</h4>;
 }

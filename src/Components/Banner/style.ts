@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { TagContainer } from '../Tag/style'
+import styled from 'styled-components';
+import { TagContainer } from '../Tag/style';
 
 export const Image = styled.div`
   width: 100%;
@@ -32,15 +32,15 @@ export const Image = styled.div`
     background-color: rgba(0, 0, 0, 0.6);
     content: '';
   }
-`
+`;
 export const Title = styled.h2`
   font-size: 36px;
   max-width: 450px;
-`
+`;
 export const Prices = styled.p`
   font-size: 24px;
   margin-top: 24px;
   span {
     text-decoration: line-through;
   }
-`
+`;

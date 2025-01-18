@@ -1,13 +1,13 @@
-import * as S from './style'
+import * as S from './style';
 
 export type Props = {
-  type: 'button' | 'link' | 'submit'
-  title: string
-  children: string
-  to?: string
-  onClick?: () => void
-  variant?: 'primary' | 'secondary'
-}
+  type: 'button' | 'link' | 'submit';
+  title: string;
+  children: string;
+  to?: string;
+  onClick?: () => void;
+  variant?: 'primary' | 'secondary';
+};
 
 export function Button({
   type,
@@ -15,7 +15,7 @@ export function Button({
   children,
   onClick,
   title,
-  variant = 'primary'
+  variant = 'primary',
 }: Props): JSX.Element {
   if (type === 'button') {
     return (
@@ -27,11 +27,11 @@ export function Button({
       >
         {children}
       </S.ButtonContainer>
-    )
+    );
   }
   return (
     <S.ButtonLink to={to as string} title={title}>
       {children}
     </S.ButtonLink>
-  )
+  );
 }

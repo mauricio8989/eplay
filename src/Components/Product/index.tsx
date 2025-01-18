@@ -1,14 +1,14 @@
-import { Tag } from '../Tag'
-import * as S from './style'
+import { Tag } from '../Tag';
+import * as S from './style';
 type Props = {
-  image: string
-  infos: string[]
-  system: string
-  category: string
-  title: string
-  description: string
-  id: number
-}
+  image: string;
+  infos: string[];
+  system: string;
+  category: string;
+  title: string;
+  description: string;
+  id: number;
+};
 
 export function Product({
   image,
@@ -17,13 +17,13 @@ export function Product({
   category,
   title,
   description,
-  id
+  id,
 }: Props) {
   function formatDescription(description: string) {
     if (description.length > 95) {
-      return description.slice(0, 92) + '...'
+      return description.slice(0, 92) + '...';
     }
-    return description
+    return description;
   }
   return (
     <S.Card to={`/produto/${id}`}>
@@ -38,5 +38,5 @@ export function Product({
       <Tag>{system}</Tag>
       <S.Description>{formatDescription(description)}</S.Description>
     </S.Card>
-  )
+  );
 }

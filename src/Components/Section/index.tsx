@@ -1,10 +1,10 @@
-import { Container, Title } from './style'
+import { Container, Title } from './style';
 
 export type Props = {
-  title: string
-  background: 'gray' | 'black'
-  children: JSX.Element
-}
+  title: string;
+  background: 'gray' | 'black';
+  children: JSX.Element;
+};
 
 export function Section({ title, background, children }: Props) {
   return (
@@ -14,5 +14,5 @@ export function Section({ title, background, children }: Props) {
         {children}
       </div>
     </Container>
-  )
+  );
 }

@@ -1,8 +1,8 @@
-import styled from 'styled-components'
-import { colors } from '../../styles'
-import { ButtonContainer } from '../Button/style'
+import styled from 'styled-components';
+import { colors } from '../../styles';
+import { ButtonContainer } from '../Button/style';
 
-import close from '../../images/fechar.png'
+import close from '../../images/fechar.png';
 
 export const Container = styled.div`
   width: 100%;
@@ -16,7 +16,7 @@ export const Container = styled.div`
   &.is-open {
     display: flex;
   }
-`
+`;
 export const OverLay = styled.div`
   width: 100%;
   height: 100%;
@@ -25,7 +25,7 @@ export const OverLay = styled.div`
   left: 0;
   background-color: #000;
   opacity: 0.7;
-`
+`;
 export const Sidebar = styled.aside`
   max-width: 360px;
   width: 100%;
@@ -41,7 +41,7 @@ export const Sidebar = styled.aside`
       background-color: transparent;
     }
   }
-`
+`;
 export const Prices = styled.p`
   font-weight: bold;
   font-size: 14px;
@@ -53,7 +53,7 @@ export const Prices = styled.p`
     color: ${colors.lightGray};
     font-size: 12px;
   }
-`
+`;
 
 export const Quantity = styled.p`
   font-weight: bold;
@@ -61,7 +61,7 @@ export const Quantity = styled.p`
   color: ${colors.white};
   margin-top: 32px;
   margin-bottom: 16px;
-`
+`;
 export const CartItem = styled.li`
   display: flex;
   border-bottom: 1px solid ${colors.lightGray};
@@ -101,4 +101,4 @@ export const CartItem = styled.li`
     right: 0;
     cursor: pointer;
   }
-`
+`;

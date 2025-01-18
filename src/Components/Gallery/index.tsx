@@ -1,48 +1,48 @@
-import * as S from './style'
-import zoom from '../../images/zoom.png'
-import play from '../../images/play.png'
-import close from '../../images/fechar.png'
-import { Section } from '../Section'
-import { useState } from 'react'
+import * as S from './style';
+import zoom from '../../images/zoom.png';
+import play from '../../images/play.png';
+import close from '../../images/fechar.png';
+import { Section } from '../Section';
+import { useState } from 'react';
 
 interface GalleryItem {
-  type: string
-  url: string
+  type: string;
+  url: string;
 }
 
 type Props = {
-  defaultCover: string
-  name: string
-  items: GalleryItem[]
-}
+  defaultCover: string;
+  name: string;
+  items: GalleryItem[];
+};
 
 interface ModalState extends GalleryItem {
-  isVisible: boolean
+  isVisible: boolean;
 }
 
 export function Gallery({ defaultCover, name, items }: Props) {
   const [modal, setModal] = useState<ModalState>({
     isVisible: false,
     type: 'image',
-    url: ''
-  })
+    url: '',
+  });
 
   function getMediaCover(item: GalleryItem) {
-    if (item.type === 'image') return item.url
-    return defaultCover
+    if (item.type === 'image') return item.url;
+    return defaultCover;
   }
 
   function getMediaIcon(item: GalleryItem) {
-    if (item.type === 'image') return zoom
-    return play
+    if (item.type === 'image') return zoom;
+    return play;
   }
 
   function closeModal() {
     setModal({
       isVisible: false,
       type: 'image',
-      url: ''
-    })
+      url: '',
+    });
   }
 
   return (
@@ -56,8 +56,8 @@ export function Gallery({ defaultCover, name, items }: Props) {
                 setModal({
                   isVisible: true,
                   type: media.type,
-                  url: media.url
-                })
+                  url: media.url,
+                });
               }}
             >
               <img
@@ -89,5 +89,5 @@ export function Gallery({ defaultCover, name, items }: Props) {
         <div className="overlay" onClick={closeModal}></div>
       </S.Modal>
     </>
-  )
+  );
 }

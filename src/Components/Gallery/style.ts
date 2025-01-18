@@ -1,11 +1,11 @@
-import styled from 'styled-components'
-import { colors } from '../../styles'
+import styled from 'styled-components';
+import { colors } from '../../styles';
 
 export const Items = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-`
+`;
 export const Action = styled.div`
   width: 100%;
   height: 100%;
@@ -19,7 +19,7 @@ export const Action = styled.div`
   cursor: pointer;
   opacity: 0;
   transition: opacity 500ms ease;
-`
+`;
 
 export const Item = styled.li`
   position: relative;
@@ -37,7 +37,7 @@ export const Item = styled.li`
       transition: opacity 500ms ease;
     }
   }
-`
+`;
 export const Modal = styled.div`
   width: 100%;
   height: 100%;
@@ -61,7 +61,7 @@ export const Modal = styled.div`
     left: 0;
     background-color: rgba(0, 0, 0, 0.73);
   }
-`
+`;
 export const ModalContent = styled.div`
   max-width: 960px;
   position: relative;
@@ -94,4 +94,4 @@ export const ModalContent = styled.div`
     height: 480px;
     border: none;
   }
-`
+`;

@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { breakpoints, colors } from '../../styles'
+import styled from 'styled-components';
+import { breakpoints, colors } from '../../styles';
 
 export const Links = styled.ul`
   display: flex;
@@ -9,7 +9,7 @@ export const Links = styled.ul`
     display: block;
     margin-left: 0;
   }
-`
+`;
 
 export const HeaderBar = styled.header`
   background-color: ${colors.gray};
@@ -41,7 +41,7 @@ export const HeaderBar = styled.header`
       margin: auto;
     }
   }
-`
+`;
 export const HeaderRow = styled.div`
   display: flex;
   align-items: center;
@@ -57,7 +57,7 @@ export const HeaderRow = styled.div`
       }
     }
   }
-`
+`;
 
 export const Hamburguer = styled.div`
   width: 32px;
@@ -72,7 +72,7 @@ export const Hamburguer = styled.div`
   @media (min-width: ${breakpoints.tablet}) {
     display: none;
   }
-`
+`;
 
 export const NavMobile = styled.nav`
   display: none;
@@ -84,7 +84,7 @@ export const NavMobile = styled.nav`
       display: none;
     }
   }
-`
+`;
 
 export const LinkItem = styled.li`
   @media (max-width: ${breakpoints.tablet}) {
@@ -94,7 +94,7 @@ export const LinkItem = styled.li`
       text-align: center;
     }
   }
-`
+`;
 
 export const ButtonCart = styled.a`
   font-weight: 700;
@@ -109,4 +109,4 @@ export const ButtonCart = styled.a`
   svg {
     font-size: 24px;
   }
-`
+`;

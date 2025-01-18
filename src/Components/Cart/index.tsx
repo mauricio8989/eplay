@@ -1,28 +1,42 @@
-import { Button } from '../Button'
-import { Tag } from '../Tag'
-import * as S from './style'
+import { Button } from '../Button';
+import { Tag } from '../Tag';
+import * as S from './style';
 
-import { close } from '../../store/reducers/cart'
-import { remove } from '../../store/reducers/cart'
+import { close } from '../../store/reducers/cart';
+import { remove } from '../../store/reducers/cart';
 
-import { useDispatch, useSelector } from 'react-redux'
-import { RootReducer } from '../../store'
-import { parseToBrl } from '../../utils'
-import { Game } from '../../pages/Home'
+import { useDispatch, useSelector } from 'react-redux';
+import { RootReducer } from '../../store';
+import { parseToBrl } from '../../utils';
+import { Game } from '../../pages/Home';
+import { useNavigate } from 'react-router-dom';
 
 export function Cart() {
-  const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
-  const dispatch = useDispatch()
+  const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   function closeCart() {
-    dispatch(close())
+    dispatch(close());
   }
 
   function getTotalPrice() {
-    return items.reduce((acumulator, currentValue) => {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      return (acumulator += currentValue.prices.current!)
-    }, 0)
+    return items.reduce((acumulator, currentItem) => {
+      if (currentItem.prices.current) {
+        return (acumulator += currentItem.prices.current);
+      }
+      return 0;
+    }, 0);
   }
+
+  const goToCheckout = () => {
+    if (items.length > 0) {
+      navigate('/checkout');
+      closeCart();
+    } else {
+      alert('Você não possui jogos no carrinho.');
+    }
+  };
 
   return (
     <S.Container className={isOpen ? 'is-open' : ''}>
@@ -53,10 +67,14 @@ export function Cart() {
           Total de {parseToBrl(getTotalPrice())}{' '}
           <span>Em até 6x sem juros</span>
         </S.Prices>
-        <Button title="Clique aqui para continuar com a compra" type="button">
+        <Button
+          onClick={goToCheckout}
+          title="Clique aqui para continuar com a compra"
+          type="button"
+        >
           Continuar com a compra
         </Button>
       </S.Sidebar>
     </S.Container>
-  )
+  );
 }

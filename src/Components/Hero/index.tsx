@@ -1,16 +1,16 @@
-import { Game } from '../../pages/Home'
-import { Button } from '../Button'
-import { Tag } from '../Tag'
-import { Banner, Infos } from './style'
-import { parseToBrl } from '../../utils'
-import { add } from '../../store/reducers/cart'
-import { useDispatch } from 'react-redux'
+import { Game } from '../../pages/Home';
+import { Button } from '../Button';
+import { Tag } from '../Tag';
+import { Banner, Infos } from './style';
+import { parseToBrl } from '../../utils';
+import { add } from '../../store/reducers/cart';
+import { useDispatch } from 'react-redux';
 type Props = {
-  game: Game
-}
+  game: Game;
+};
 
 export function Hero({ game }: Props) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   return (
     <Banner style={{ backgroundImage: `url(${game.media.cover})` }}>
       <div className="container">
@@ -39,5 +39,5 @@ export function Hero({ game }: Props) {
         </Infos>
       </div>
     </Banner>
-  )
+  );
 }

@@ -1,9 +1,9 @@
-import { TagContainer } from './style'
+import { TagContainer } from './style';
 export type Props = {
-  size?: 'small' | 'large'
-  children: string
-}
+  size?: 'small' | 'large';
+  children: string;
+};
 
 export function Tag({ children, size = 'small' }: Props) {
-  return <TagContainer size={size}>{children}</TagContainer>
+  return <TagContainer size={size}>{children}</TagContainer>;
 }
