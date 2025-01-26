@@ -32,27 +32,26 @@ export type Game = {
 };
 
 export function Home() {
-  const { data: onSaleGame } = useGetOnSaleQuery();
-  const { data: soonGame } = useGetSoonQuery();
+  const { data: onSaleGame, isLoading: isLoadingSale } = useGetOnSaleQuery();
+  const { data: soonGame, isLoading: isLoadingSoon } = useGetSoonQuery();
 
-  if (onSaleGame && soonGame) {
-    return (
-      <>
-        <Banner />
-        <ProductsList
-          id="on-sale"
-          title="Promoções"
-          background="gray"
-          games={onSaleGame}
-        />
-        <ProductsList
-          id="coming-soon"
-          title="Em reve"
-          background="black"
-          games={soonGame}
-        />
-      </>
-    );
-  }
-  return <h4>Carregando...</h4>;
+  return (
+    <>
+      <Banner />
+      <ProductsList
+        id="on-sale"
+        title="Promoções"
+        background="gray"
+        games={onSaleGame}
+        isLoading={isLoadingSale}
+      />
+      <ProductsList
+        id="coming-soon"
+        title="Em reve"
+        background="black"
+        games={soonGame}
+        isLoading={isLoadingSoon}
+      />
+    </>
+  );
 }

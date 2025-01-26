@@ -3,11 +3,12 @@ import { Tag } from '../Tag';
 import { Button } from '../Button';
 import { useGetFeaturedGameQuery } from '../../services/api';
 import { parseToBrl } from '../../utils';
+import { Loader } from '../Loader';
 
 export function Banner() {
   const { data: game } = useGetFeaturedGameQuery();
 
-  if (!game) return <h3>Carrehando...</h3>;
+  if (!game) return <Loader />;
   const route = `/produto/${game.id}`;
   return (
     <S.Image style={{ backgroundImage: `url(${game.media.cover})` }}>
